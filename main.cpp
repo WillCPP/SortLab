@@ -14,11 +14,7 @@ const int S_25000 = 25000;
 int main() {
 	//initialize random number generator and distributions
 	random_device rd;
-<<<<<<< HEAD
-	default_random_engine rng{rng()};
-=======
 	default_random_engine rng{rd()};
->>>>>>> 4ebc18e4a6a8a2a9aa120b6beef3e508c2a06906
 	uniform_real_distribution<double> dist_10(0, 2 * S_10);
 	uniform_real_distribution<double> dist_100(0, 2 * S_100);
 	uniform_real_distribution<double> dist_500(0, 2 * S_500);
@@ -48,14 +44,9 @@ int main() {
 	}
 
 	//============= test functions below
-<<<<<<< HEAD
-	heapSort(arr_10, S_10);
-	insertionSort(arr_10,S_10);
-=======
 	//heapSort(arr_10, S_10);
 	//countingSort(arr_10, S_10);
 	radixSort(arr_10, S_10);
->>>>>>> 4ebc18e4a6a8a2a9aa120b6beef3e508c2a06906
 
 	return 0;
 }

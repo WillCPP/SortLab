@@ -1,9 +1,6 @@
 #pragma once
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 4ebc18e4a6a8a2a9aa120b6beef3e508c2a06906
 void heapify(int arr[], int n, int i)
 {
 	int largest = i;
@@ -42,15 +39,6 @@ void heapSort(int arr[], int n)
 	}
 }
 
-<<<<<<< HEAD
-void countingSort() {
-
-}
-
-void radixSort() {
-
-}
-=======
 void countingSort(int arr[], int n) {
 	int index = 0;
 	int min = -1;
@@ -120,4 +108,3 @@ void radixSort(int arr[], int n) {
 		countingSortForRadix(arr, n, i);
 	}
 }
->>>>>>> 4ebc18e4a6a8a2a9aa120b6beef3e508c2a06906
