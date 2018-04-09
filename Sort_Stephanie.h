@@ -1,6 +1,5 @@
 #pragma once
 
-
 void bubbleSort(int array[], int len)
 {
     for (int i = 0; i < len-1; i++) {
@@ -13,10 +12,6 @@ void bubbleSort(int array[], int len)
             }
         }   
     }
-<<<<<<< HEAD
-    //return array;
-=======
->>>>>>> b6c093405c6192106f0b049f32f0183c03cdab37
 }
 
 void insertionSort(int array[], int len) {
