@@ -14,7 +14,7 @@ const int S_25000 = 25000;
 int main() {
 	//initialize random number generator and distributions
 	random_device rd;
-	default_random_engine rng{rng()};
+	default_random_engine rng{rd()};
 	uniform_real_distribution<double> dist_10(0, 2 * S_10);
 	uniform_real_distribution<double> dist_100(0, 2 * S_100);
 	uniform_real_distribution<double> dist_500(0, 2 * S_500);
