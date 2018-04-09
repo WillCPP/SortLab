@@ -1,6 +1,7 @@
 #include <iostream>
 #include <random>
 #include <ctime>
+#include <chrono>
 #include "Sort_Will.h"
 #include "Sort_Stephanie.h"
 using namespace std;
@@ -46,7 +47,9 @@ int main() {
 	//============= test functions below
 	//heapSort(arr_10, S_10);
 	//countingSort(arr_10, S_10);
-	radixSort(arr_10, S_10);
+	//radixSort(arr_10, S_10);
+
+	//auto start_time
 
 	return 0;
 }
