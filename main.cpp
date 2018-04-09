@@ -2,6 +2,7 @@
 #include <random>
 #include <ctime>
 #include "Sort_Will.h"
+#include "Sort_Stephanie.h"
 using namespace std;
 
 const int S_10 = 10;
