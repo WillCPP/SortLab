@@ -48,17 +48,17 @@ int main() {
 	}
 
 	//============= test functions below
-	heapSort(arr_10, S_10);
-	insertionSort(arr_10,S_10);
+	//heapSort(arr_10, S_10);
+	//insertionSort(arr_10,S_10);
 	//heapSort(arr_10, S_10);
 	//countingSort(arr_10, S_10);
 	//radixSort(arr_10, S_10);
 
 	auto start_time = high_resolution_clock::now();
 	//call function here
-	radixSort(arr_25000, S_25000);
+	
 	auto stop_time = high_resolution_clock::now();
-	auto duration = duration_cast<seconds>(stop_time - start_time);
+	auto duration = duration_cast<milliseconds>(stop_time - start_time);
 
 	return 0;
 }
