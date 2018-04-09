@@ -1,6 +1,7 @@
 #include <iostream>
 #include <random>
 #include <ctime>
+#include "Sort_Will.h"
 using namespace std;
 
 const int S_10 = 10;
