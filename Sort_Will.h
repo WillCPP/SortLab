@@ -1,45 +1,40 @@
 #pragma once
 
-void heapify(int arr[], int i, int n) {
-	int j = 2 * i;
-	int temp = a[i];
+void heapify(int arr[], int n, int i)
+{
+	int largest = i;
+	int left = 2 * i + 1;
+	int right = 2 * i + 2;
 
-	while (j <= n)
-	{
-		if (j < n && arr[j+1] > arr[j])
-		{
-			j = j += 1;
-		}
-		if (temp > arr[j])
-		{
-			break;
-		}
-		else if (temp <= arr[j])
-		{
-			arr[j / 2] = arr[j];
-			j = 2 * j;
-		}
+	if (left < n && arr[left] > arr[largest]) {
+		largest = left;
 	}
-	arr[j / 2] = temp;
-	return;
-}
 
-void buildHeap(int arr[], int n) {
-	for (int i = n/2; i >= 1; i--)
+	if (right < n && arr[right] > arr[largest]) {
+		largest = right;
+	}
+
+	if (largest != i)
 	{
-		heapify(arr, i, n);
+		int temp = arr[i];
+		arr[i] = arr[largest];
+		arr[largest] = temp;
+		heapify(arr, n, largest);
 	}
 }
 
-void heapSort(int arr[], int n) {
-	buildHeap(arr, n);
-	int temp = -1;
-	for (int i = n; i >= 2; i--)
+void heapSort(int arr[], int n)
+{
+	for (int i = n / 2 - 1; i >= 0; i--) {
+		heapify(arr, n, i);
+	}
+
+	for (int i = n - 1; i >= 0; i--)
 	{
-		temp = arr[i];
-		arr[i] = arr[1];
-		arr[1] = temp;
-		heapify(arr, 1, i - 1);
+		int temp = arr[0];
+		arr[0] = arr[i];
+		arr[i] = temp;
+		heapify(arr, i, 0);
 	}
 }
 

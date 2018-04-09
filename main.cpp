@@ -43,6 +43,7 @@ int main() {
 	}
 
 	//============= test functions below
+	heapSort(arr_10, S_10);
 
 	return 0;
 }
