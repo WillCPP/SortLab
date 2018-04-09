@@ -24,5 +24,4 @@ void insertionSort(int array[], int len) {
         }
         array[j+1] = item;
     }
-    insertionSort(array, len);
 }

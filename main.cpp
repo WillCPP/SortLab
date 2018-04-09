@@ -49,7 +49,7 @@ int main() {
 
 	//============= test functions below
 	//heapSort(arr_10, S_10);
-	//insertionSort(arr_10,S_10);
+	insertionSort(arr_10,S_10);
 	//heapSort(arr_10, S_10);
 	//countingSort(arr_10, S_10);
 	//radixSort(arr_10, S_10);
