@@ -13,7 +13,7 @@ void bubbleSort(int array[], int len)
             }
         }   
     }
-    return array;
+    //return array;
 }
 
 void insertionSort(int array[], int len) {
