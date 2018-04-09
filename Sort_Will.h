@@ -38,14 +38,14 @@ void heapSort(int arr[], int n)
 	}
 }
 
-void countingSort(int arr[], int sz) {
+void countingSort(int arr[], int n) {
 	int index = 0;
 	int min = -1;
 	int max = -1;
 	int k = -1;
 
 	min = max = arr[0];
-	for (int i = 1; i < sz; i++) {
+	for (int i = 1; i < n; i++) {
 		min = (arr[i] < min) ? arr[i] : min;
 		max = (arr[i] > max) ? arr[i] : max;
 	}
@@ -56,7 +56,7 @@ void countingSort(int arr[], int sz) {
 		counts[i] = 0;
 	}
 
-	for (int i = 0; i < sz; i++) {
+	for (int i = 0; i < n; i++) {
 		counts[arr[i] - min]++;
 	}
 	for (int i = min; i <= max; i++) {
@@ -70,7 +70,26 @@ void countingSort(int arr[], int sz) {
 
 void countingSortForRadix(int arr[], int n, int exp)
 {
-	
+	int *output = new int[n];
+	int count[10] = { 0 };
+
+	for (int i = 0; i < n; i++) {
+		count[(arr[i] / exp) % 10]++;
+	}
+
+	for (int i = 1; i < 10; i++) {
+		count[i] += count[i - 1];
+	}
+
+	for (int i = n - 1; i >= 0; i--)
+	{
+		output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+		count[(arr[i] / exp) % 10]--;
+	}
+
+	for (int i = 0; i < n; i++) {
+		arr[i] = output[i];
+	}
 }
 
 void radixSort(int arr[], int n) {
@@ -83,7 +102,7 @@ void radixSort(int arr[], int n) {
 		}
 	}
 
-	for (int i = 0; max/i > 0; i *= 10)
+	for (int i = 1; max/i > 0; i *= 10)
 	{
 		countingSortForRadix(arr, n, i);
 	}
