@@ -16,9 +16,13 @@ const int S_25000 = 25000;
 int main() {
 	//initialize random number generator and distributions
 	random_device rd;
+<<<<<<< HEAD
+	default_random_engine rng{rd()};
+=======
 
 	default_random_engine rng{rd()};
 
+>>>>>>> b6c093405c6192106f0b049f32f0183c03cdab37
 	uniform_real_distribution<double> dist_10(0, 2 * S_10);
 	uniform_real_distribution<double> dist_100(0, 2 * S_100);
 	uniform_real_distribution<double> dist_500(0, 2 * S_500);
@@ -48,6 +52,13 @@ int main() {
 	}
 
 	//============= test functions below
+<<<<<<< HEAD
+	//heapSort(arr_10, S_10);
+	//countingSort(arr_10, S_10);
+	radixSort(arr_10, S_10);
+=======
+	heapSort(arr_10, S_10);
+	insertionSort(arr_10,S_10);
 	//heapSort(arr_10, S_10);
 	//insertionSort(arr_10,S_10);
 	//heapSort(arr_10, S_10);
@@ -58,7 +69,8 @@ int main() {
 	//call function here
 	
 	auto stop_time = high_resolution_clock::now();
-	auto duration = duration_cast<milliseconds>(stop_time - start_time);
+	auto duration = duration_cast<seconds>(stop_time - start_time);
+>>>>>>> b6c093405c6192106f0b049f32f0183c03cdab37
 
 	return 0;
 }
