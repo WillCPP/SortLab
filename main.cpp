@@ -2,7 +2,7 @@
 #include <random>
 #include <ctime>
 #include "Sort_Will.h"
-//#include "Sort_Stephanie.h"
+#include "Sort_Stephanie.h"
 using namespace std;
 
 const int S_10 = 10;
@@ -45,7 +45,7 @@ int main() {
 
 	//============= test functions below
 	heapSort(arr_10, S_10);
-	//bubbleSort(arr_10,S_10);
+	insertionSort(arr_10,S_10);
 
 	return 0;
 }
