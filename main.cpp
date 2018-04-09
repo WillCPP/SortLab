@@ -11,8 +11,8 @@ const int S_25000 = 25000;
 
 int main() {
 	//initialize random number generator and distributions
-	random_device rng;
-	default_random_engine eng{rng()};
+	random_device rd;
+	default_random_engine rng{rng()};
 	uniform_real_distribution<double> dist_10(0, 2 * S_10);
 	uniform_real_distribution<double> dist_100(0, 2 * S_100);
 	uniform_real_distribution<double> dist_500(0, 2 * S_500);
@@ -28,11 +28,11 @@ int main() {
 
 	//fill arrays with random numbers
 	for (int i = 0; i < S_25000 - 1; ++i) {
-		int temp_10 = static_cast<int>(dist_10(eng));
-		int temp_100 = static_cast<int>(dist_100(eng));
-		int temp_500 = static_cast<int>(dist_500(eng));
-		int temp_5000 = static_cast<int>(dist_5000(eng));
-		int temp_25000 = static_cast<int>(dist_25000(eng));
+		int temp_10 = static_cast<int>(dist_10(rng));
+		int temp_100 = static_cast<int>(dist_100(rng));
+		int temp_500 = static_cast<int>(dist_500(rng));
+		int temp_5000 = static_cast<int>(dist_5000(rng));
+		int temp_25000 = static_cast<int>(dist_25000(rng));
 
 		if (i < S_10){ arr_10[i] = temp_10; }
 		if (i < S_100){ arr_100[i] = temp_100; }
