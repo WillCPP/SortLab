@@ -1,6 +1,9 @@
 #pragma once
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b6c093405c6192106f0b049f32f0183c03cdab37
 void heapify(int arr[], int n, int i)
 {
 	int largest = i;

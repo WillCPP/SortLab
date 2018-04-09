@@ -1,9 +1,11 @@
 #include <iostream>
 #include <random>
 #include <ctime>
+#include <chrono>
 #include "Sort_Will.h"
 #include "Sort_Stephanie.h"
 using namespace std;
+using namespace std::chrono;
 
 const int S_10 = 10;
 const int S_100 = 100;
@@ -14,7 +16,13 @@ const int S_25000 = 25000;
 int main() {
 	//initialize random number generator and distributions
 	random_device rd;
+<<<<<<< HEAD
 	default_random_engine rng{rd()};
+=======
+
+	default_random_engine rng{rd()};
+
+>>>>>>> b6c093405c6192106f0b049f32f0183c03cdab37
 	uniform_real_distribution<double> dist_10(0, 2 * S_10);
 	uniform_real_distribution<double> dist_100(0, 2 * S_100);
 	uniform_real_distribution<double> dist_500(0, 2 * S_500);
@@ -44,9 +52,23 @@ int main() {
 	}
 
 	//============= test functions below
+<<<<<<< HEAD
 	//heapSort(arr_10, S_10);
 	//countingSort(arr_10, S_10);
 	radixSort(arr_10, S_10);
+=======
+	heapSort(arr_10, S_10);
+	insertionSort(arr_10,S_10);
+	//heapSort(arr_10, S_10);
+	//countingSort(arr_10, S_10);
+	//radixSort(arr_10, S_10);
+
+	auto start_time = high_resolution_clock::now();
+	//call function here
+	radixSort(arr_25000, S_25000);
+	auto stop_time = high_resolution_clock::now();
+	auto duration = duration_cast<seconds>(stop_time - start_time);
+>>>>>>> b6c093405c6192106f0b049f32f0183c03cdab37
 
 	return 0;
 }
