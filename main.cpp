@@ -5,6 +5,7 @@
 #include "Sort_Will.h"
 #include "Sort_Stephanie.h"
 using namespace std;
+using namespace std::chrono;
 
 const int S_10 = 10;
 const int S_100 = 100;
@@ -53,7 +54,11 @@ int main() {
 	//countingSort(arr_10, S_10);
 	//radixSort(arr_10, S_10);
 
-	//auto start_time
+	auto start_time = high_resolution_clock::now();
+	//call function here
+	radixSort(arr_25000, S_25000);
+	auto stop_time = high_resolution_clock::now();
+	auto duration = duration_cast<seconds>(stop_time - start_time);
 
 	return 0;
 }
