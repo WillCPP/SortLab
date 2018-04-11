@@ -48,12 +48,8 @@ int main() {
 	}
 
 	//============= test functions below
-<<<<<<< HEAD
-	heapSort(arr_10, S_10);
-=======
 	//heapSort(arr_10, S_10);
->>>>>>> 2dfdb9f98b5ab03a0b581361ac1d1fc3c09d680d
-	insertionSort(arr_10,S_10);
+	//insertionSort(arr_10,S_10);
 	//heapSort(arr_10, S_10);
 	//countingSort(arr_10, S_10);
 	//radixSort(arr_10, S_10);
