@@ -2,15 +2,18 @@
 
 void bubbleSort(int array[], int len)
 {
+	bool swapped = false;
     for (int i = 0; i < len-1; i++) {
-        for (int j = 0; j < len-i-1; j++){
+		swapped = false;
+        for (int j = 0; j < len-1; j++){
             if (array[j + 1] < array[j]){ //swap
+				swapped = true;
                 int swap = array[j + 1];
                 array[j+1] = array[i];
                 array[i] = swap;
-                
             }
-        }   
+        }  
+		if (!swapped) { return; }
     }
 }
 

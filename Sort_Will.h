@@ -1,4 +1,6 @@
 #pragma once
+#include <array>
+using namespace std;
 
 void heapify(int arr[], int n, int i)
 {
@@ -39,7 +41,7 @@ void heapSort(int arr[], int n)
 }
 
 void countingSort(int arr[], int n) {
-	int index = 0;
+	/*int index = 0;
 	int min = -1;
 	int max = -1;
 	int k = -1;
@@ -65,7 +67,48 @@ void countingSort(int arr[], int n) {
 		}
 	}
 
-	delete[] counts;
+	delete[] counts;*/
+
+	//find minimum and maximum values in array
+	int max = INT_MIN;
+	int min = INT_MAX;
+	for (int i = 0; i < n; i++) { 
+		max = (arr[i] > max) ? arr[i] : max; 
+		if (arr[i] < 0)
+		{
+			int j = 0;
+			j = arr[i];
+			int k = 0;
+		}
+		min = (arr[i] < min) ? arr[i] : min;
+	}
+
+	//calc shift
+	int shift = max - min + 1;
+	int *counts = new int[shift];
+	for (int i = 0; i < shift; i++) { counts[i] = 0; }
+	int *returnArr = new int[n];
+
+	//count instances
+	for (int i = 0; i < n; i++)
+	{
+		counts[arr[i] - min]++;
+	}
+	//sequential summation
+	for (int i = 1; i < shift; i++)
+	{
+		counts[i] += counts[i - 1];
+	}
+	for (int i = n - 1; i > -1 ; i--)
+	{
+		counts[arr[i] - min]--;
+		returnArr[counts[arr[i] - min]] = arr[i];
+	}
+	for (int i = 0; i < n; i++)
+	{
+		arr[i] = returnArr[i];
+	}
+
 }
 
 void countingSortForRadix(int arr[], int n, int exp)
