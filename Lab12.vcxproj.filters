@@ -18,6 +18,9 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Student.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sort_Stephanie.h">
@@ -27,6 +30,15 @@
       <Filter>Resource Files</Filter>
     </ClInclude>
     <ClInclude Include="Sort_Sean.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Student.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Nodes.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>

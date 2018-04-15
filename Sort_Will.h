@@ -41,34 +41,6 @@ void heapSort(int arr[], int n)
 }
 
 void countingSort(int arr[], int n) {
-	/*int index = 0;
-	int min = -1;
-	int max = -1;
-	int k = -1;
-
-	min = max = arr[0];
-	for (int i = 1; i < n; i++) {
-		min = (arr[i] < min) ? arr[i] : min;
-		max = (arr[i] > max) ? arr[i] : max;
-	}
-
-	k = max - min + 1;
-	int *counts = new int[k];
-	for (int i = 0; i < k; i++) {
-		counts[i] = 0;
-	}
-
-	for (int i = 0; i < n; i++) {
-		counts[arr[i] - min]++;
-	}
-	for (int i = min; i <= max; i++) {
-		for (int j = 0; j < counts[i - min]; j++) {
-			arr[index++] = i;
-		}
-	}
-
-	delete[] counts;*/
-
 	//find minimum and maximum values in array
 	int max = INT_MIN;
 	int min = INT_MAX;
@@ -94,49 +66,59 @@ void countingSort(int arr[], int n) {
 	{
 		counts[arr[i] - min]++;
 	}
+
 	//sequential summation
 	for (int i = 1; i < shift; i++)
 	{
 		counts[i] += counts[i - 1];
 	}
+
+	//sort
 	for (int i = n - 1; i > -1 ; i--)
 	{
 		counts[arr[i] - min]--;
 		returnArr[counts[arr[i] - min]] = arr[i];
 	}
+
+	//return restult
 	for (int i = 0; i < n; i++)
 	{
 		arr[i] = returnArr[i];
 	}
 
+	delete[] counts;
 }
 
 void countingSortForRadix(int arr[], int n, int exp)
 {
-	int *output = new int[n];
-	int count[10] = { 0 };
+	int *returnArr = new int[n];
+	int counts[] = { 0, 0, 0, 0 , 0, 0, 0, 0, 0, 0 };
 
+	//count instances
 	for (int i = 0; i < n; i++) {
-		count[(arr[i] / exp) % 10]++;
+		counts[(arr[i] / exp) % 10]++;
 	}
 
+	//sequential summaation
 	for (int i = 1; i < 10; i++) {
-		count[i] += count[i - 1];
+		counts[i] += counts[i - 1];
 	}
 
+	//sort
 	for (int i = n - 1; i >= 0; i--)
 	{
-		output[count[(arr[i] / exp) % 10] - 1] = arr[i];
-		count[(arr[i] / exp) % 10]--;
+		returnArr[counts[(arr[i] / exp) % 10] - 1] = arr[i];
+		counts[(arr[i] / exp) % 10]--;
 	}
 
+	//return result
 	for (int i = 0; i < n; i++) {
-		arr[i] = output[i];
+		arr[i] = returnArr[i];
 	}
 }
 
 void radixSort(int arr[], int n) {
-	int max = -1;
+	int max = INT_MIN;
 	for (int i = 0; i < n; i++)
 	{
 		if (arr[i] > max)
@@ -150,3 +132,8 @@ void radixSort(int arr[], int n) {
 		countingSortForRadix(arr, n, i);
 	}
 }
+
+
+void bubbleSort_LL() {}
+
+void insertionSort_LL() {}
