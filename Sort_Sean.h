@@ -40,3 +40,7 @@ void mergeSort(int data[], int start, int end, int n) {//start is the number the
 		data[x+start] = temp[x];
 	}
 }
+
+void quickSort(int data[], int n) {
+
+}
