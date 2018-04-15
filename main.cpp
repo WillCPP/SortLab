@@ -7,6 +7,9 @@
 #include "Sort_Will.h"
 #include "Sort_Stephanie.h"
 #include "Sort_Sean.h"
+#include "LinkedList.h"
+#include "Student.h"
+#include "Date.h"
 using namespace std;
 using namespace std::chrono;
 
@@ -200,23 +203,23 @@ int main() {
 	auto duration_25000_merge = duration_cast<nanoseconds>(stop_time_25000_merge - start_time_25000_merge);
 
 	auto start_time_10_quick = high_resolution_clock::now();
-	quickSort(arr_10_quick, S_10); //call function here
+	quickSort(arr_10_quick, 0, S_10 - 1); //call function here
 	auto stop_time_10_quick = high_resolution_clock::now();
 	auto duration_10_quick = duration_cast<nanoseconds>(stop_time_10_quick - start_time_10_quick);
 	auto start_time_100_quick = high_resolution_clock::now();
-	quickSort(arr_100_quick, S_100); //call function here
+	quickSort(arr_100_quick, 0, S_100 - 1); //call function here
 	auto stop_time_100_quick = high_resolution_clock::now();
 	auto duration_100_quick = duration_cast<nanoseconds>(stop_time_100_quick - start_time_100_quick);
 	auto start_time_500_quick = high_resolution_clock::now();
-	quickSort(arr_500_quick, S_500); //call function here
+	quickSort(arr_500_quick, 0, S_500 - 1); //call function here
 	auto stop_time_500_quick = high_resolution_clock::now();
 	auto duration_500_quick = duration_cast<nanoseconds>(stop_time_500_quick - start_time_500_quick);
 	auto start_time_5000_quick = high_resolution_clock::now();
-	quickSort(arr_5000_quick, S_5000); //call function here
+	quickSort(arr_5000_quick, 0, S_5000 - 1); //call function here
 	auto stop_time_5000_quick = high_resolution_clock::now();
 	auto duration_5000_quick = duration_cast<nanoseconds>(stop_time_5000_quick - start_time_5000_quick);
 	auto start_time_25000_quick = high_resolution_clock::now();
-	quickSort(arr_25000_quick, S_25000); //call function here
+	quickSort(arr_25000_quick, 0, S_25000 - 1); //call function here
 	auto stop_time_25000_quick = high_resolution_clock::now();
 	auto duration_25000_quick = duration_cast<nanoseconds>(stop_time_25000_quick - start_time_25000_quick);
 
@@ -313,7 +316,17 @@ int main() {
 	cout << setw(16) << "5000" << "|" << setw(15) << right << duration_5000_merge.count() << " ns" << endl;
 	cout << setw(16) << "25000" << "|" << setw(15) << right << duration_25000_merge.count() << " ns" << endl;
 	cout << endl;
+
 	// quicksort
+	cout << "quick Sort" << endl;
+	cout << "===========" << endl;
+	cout << "Number of Items | Execution Time (ns)" << endl;
+	cout << setw(16) << "10" << "|" << setw(15) << right << duration_10_quick.count() << " ns" << endl;
+	cout << setw(16) << "100" << "|" << setw(15) << right << duration_100_quick.count() << " ns" << endl;
+	cout << setw(16) << "500" << "|" << setw(15) << right << duration_500_quick.count() << " ns" << endl;
+	cout << setw(16) << "5000" << "|" << setw(15) << right << duration_5000_quick.count() << " ns" << endl;
+	cout << setw(16) << "25000" << "|" << setw(15) << right << duration_25000_quick.count() << " ns" << endl;
+	cout << endl;
 
 	cout << "Heap Sort" << endl;
 	cout << "===========" << endl;
@@ -345,7 +358,18 @@ int main() {
 	cout << setw(16) << "25000" << "|" << setw(15) << right << duration_25000_radix.count() << " ns" << endl;
 	cout << endl;
 
-	//linked lsit stuff
+	////linked list stuff
+	//LinkedList<Student> ll;
+
+	////add items to linked list
+	//for (int i = 0; i < 20; i++)
+	//{
+	//	Student s("", "", "", Date(1,1,1), 4.0);
+	//	ll.addItem(s);
+	//}
+	////bubble sort
+	////insertionsort
+	////quicksort
 
 	return 0;
 }
