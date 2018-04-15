@@ -123,10 +123,12 @@
     <ClInclude Include="Date.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="Nodes.h" />
+    <ClInclude Include="OverShotException.h" />
     <ClInclude Include="Sort_Sean.h" />
     <ClInclude Include="Sort_Stephanie.h" />
     <ClInclude Include="Sort_Will.h" />
     <ClInclude Include="Student.h" />
+    <ClInclude Include="UnderFlowException.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
