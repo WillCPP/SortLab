@@ -7,6 +7,9 @@
 #include "Sort_Will.h"
 #include "Sort_Stephanie.h"
 #include "Sort_Sean.h"
+#include "LinkedList.h"
+#include "Student.h"
+#include "Date.h"
 using namespace std;
 using namespace std::chrono;
 
@@ -179,23 +182,23 @@ int main() {
 	auto duration_25000_insertion = duration_cast<nanoseconds>(stop_time_25000_insertion - start_time_25000_insertion);
 
 	auto start_time_10_merge = high_resolution_clock::now();
-	//mergeSort(arr_10_merge, S_10); //call function here
+	mergeSort(arr_10_merge, S_10); //call function here
 	auto stop_time_10_merge = high_resolution_clock::now();
 	auto duration_10_merge = duration_cast<nanoseconds>(stop_time_10_merge - start_time_10_merge);
 	auto start_time_100_merge = high_resolution_clock::now();
-	//mergeSort(arr_100_merge, S_100); //call function here
+	mergeSort(arr_100_merge, S_100); //call function here
 	auto stop_time_100_merge = high_resolution_clock::now();
 	auto duration_100_merge = duration_cast<nanoseconds>(stop_time_100_merge - start_time_100_merge);
 	auto start_time_500_merge = high_resolution_clock::now();
-	//mergeSort(arr_500_merge, S_500); //call function here
+	mergeSort(arr_500_merge, S_500); //call function here
 	auto stop_time_500_merge = high_resolution_clock::now();
 	auto duration_500_merge = duration_cast<nanoseconds>(stop_time_500_merge - start_time_500_merge);
 	auto start_time_5000_merge = high_resolution_clock::now();
-	//mergeSort(arr_5000_merge, S_5000); //call function here
+	mergeSort(arr_5000_merge, S_5000); //call function here
 	auto stop_time_5000_merge = high_resolution_clock::now();
 	auto duration_5000_merge = duration_cast<nanoseconds>(stop_time_5000_merge - start_time_5000_merge);
 	auto start_time_25000_merge = high_resolution_clock::now();
-	//mergeSort(arr_25000_merge, S_25000); //call function here
+	mergeSort(arr_25000_merge, S_25000); //call function here
 	auto stop_time_25000_merge = high_resolution_clock::now();
 	auto duration_25000_merge = duration_cast<nanoseconds>(stop_time_25000_merge - start_time_25000_merge);
 
@@ -355,7 +358,18 @@ int main() {
 	cout << setw(16) << "25000" << "|" << setw(15) << right << duration_25000_radix.count() << " ns" << endl;
 	cout << endl;
 
-	//linked list stuff
+	////linked list stuff
+	//LinkedList<Student> ll;
+
+	////add items to linked list
+	//for (int i = 0; i < 20; i++)
+	//{
+	//	Student s("", "", "", Date(1,1,1), 4.0);
+	//	ll.addItem(s);
+	//}
+	////bubble sort
+	////insertionsort
+	////quicksort
 
 	return 0;
 }
