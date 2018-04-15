@@ -304,6 +304,15 @@ int main() {
 	cout << endl;
 
 	// merge sort
+	cout << "Merge Sort" << endl;
+	cout << "===========" << endl;
+	cout << "Number of Items | Execution Time (ns)" << endl;
+	cout << setw(16) << "10" << "|" << setw(15) << right << duration_10_merge.count() << " ns" << endl;
+	cout << setw(16) << "100" << "|" << setw(15) << right << duration_100_merge.count() << " ns" << endl;
+	cout << setw(16) << "500" << "|" << setw(15) << right << duration_500_merge.count() << " ns" << endl;
+	cout << setw(16) << "5000" << "|" << setw(15) << right << duration_5000_merge.count() << " ns" << endl;
+	cout << setw(16) << "25000" << "|" << setw(15) << right << duration_25000_merge.count() << " ns" << endl;
+	cout << endl;
 	// quicksort
 
 	cout << "Heap Sort" << endl;
@@ -335,6 +344,8 @@ int main() {
 	cout << setw(16) << "5000" << "|" << setw(15) << right << duration_5000_radix.count() << " ns" << endl;
 	cout << setw(16) << "25000" << "|" << setw(15) << right << duration_25000_radix.count() << " ns" << endl;
 	cout << endl;
+
+	//linked lsit stuff
 
 	return 0;
 }
