@@ -4,11 +4,12 @@
 using namespace std;
 void Merge(int data[], int start,int  end) {
 	int mid = (end + start) / 2;
-	int *temp = new int[end-start+1]();//used to store sorted values 
+	int len = end - start + 1;
+	int *temp = new int[len]();//used to store sorted values 
 	int i = start;			//used to keep track of postion in start half
 	int j = mid + 1;			//used to keep track of postion in end half
 	int t = 0;				//used to keep track of position in temp
-	while (i>=mid||j>=end) {
+	while (i <= mid || j <= end) {
 		if (data[i] < data[j]) {//if i spot is smaller than j
 			temp[t] = data[i];
 			i++;
@@ -19,12 +20,12 @@ void Merge(int data[], int start,int  end) {
 		}
 		t++;
 	}
-	while (i >= mid) {
+	while (i <= mid) {
 		temp[t] = data[j];
 		j++;
 		t++;
 	}
-	while (j >= end) {
+	while (j <= end) {
 		temp[t] = data[i];
 		i++;
 		t++;
