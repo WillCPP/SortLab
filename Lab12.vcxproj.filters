@@ -47,5 +47,11 @@
     <ClInclude Include="Date.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
+    <ClInclude Include="UnderFlowException.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OverShotException.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
