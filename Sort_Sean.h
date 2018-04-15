@@ -41,6 +41,60 @@ void mergeSort(int data[], int start, int end, int n) {//start is the number the
 	}
 }
 
-void quickSort(int data[], int n) {
+int findPivot(int data[], int lower, int higher) {
+	int splitPoint = data[higher];
+	int indexLower = (lower - 1);
 
+	for (int i = lower; i <= higher; i++)
+	{
+		if (data[i] <= splitPoint)
+		{
+			indexLower++;
+			int temp = data[indexLower];
+			data[indexLower] = data[i];
+			data[i] = temp;
+		}
+	}
+	int temp = data[indexLower + 1];
+	data[indexLower + 1] = data[higher];
+	data[higher] = temp;
+
+	return indexLower + 1;
+}
+void quickSort(int data[], int lower, int higher) {
+	int low = lower;
+	int high = higher;
+	int pivot = data[(low + high) / 2];
+	int temp = -1;
+
+	while (low <= high)
+	{
+		while (data[low] < pivot)
+		{
+			low++;
+		}
+		while (data[high] > pivot)
+		{
+			high--;
+		}
+		if (low <= high)
+		{
+			temp = data[low];
+			data[low] = data[high];
+			data[high] = temp;
+			low++;
+			high--;
+		}
+	}
+
+	if (lower < high)
+	{
+		//sort lower side
+		quickSort(data, lower, high);
+	}
+	if (higher > low)
+	{
+		//sort higher side
+		quickSort(data, low, higher);
+	}
 }
