@@ -28,6 +28,8 @@ void heapify(int arr[], int n, int i)
 		arr[largest] = temp;
 		heapify(arr, n, largest);
 	}
+
+	return;
 }
 
 void heapSort(int arr[], int n)
@@ -43,6 +45,8 @@ void heapSort(int arr[], int n)
 		arr[i] = temp;
 		heapify(arr, i, 0);
 	}
+
+	return;
 }
 
 void countingSort(int arr[], int n) {
@@ -92,6 +96,7 @@ void countingSort(int arr[], int n) {
 	}
 
 	delete[] counts;
+	return;
 }
 
 void countingSortForRadix(int arr[], int n, int exp)
@@ -120,6 +125,8 @@ void countingSortForRadix(int arr[], int n, int exp)
 	for (int i = 0; i < n; i++) {
 		arr[i] = returnArr[i];
 	}
+
+	return;
 }
 
 void radixSort(int arr[], int n) {
@@ -136,12 +143,14 @@ void radixSort(int arr[], int n) {
 	{
 		countingSortForRadix(arr, n, i);
 	}
+
+	return;
 }
 
-void bubbleSort_LL (Nodes<Student> *start, SortDir dir)
+void bubbleSort_LL (Nodes<Student> *pHead, SortDir dir)
 {
 	bool swapped;
-	Nodes<Student> *ptr = start;
+	Nodes<Student> *ptr = pHead;
 	Nodes<Student> *prev = nullptr;
 
 	if (ptr == nullptr) {
@@ -151,7 +160,7 @@ void bubbleSort_LL (Nodes<Student> *start, SortDir dir)
 	do
 	{
 		swapped = false;
-		ptr = start;
+		ptr = pHead;
 
 		while (ptr->next != prev)
 		{
@@ -181,6 +190,59 @@ void bubbleSort_LL (Nodes<Student> *start, SortDir dir)
 		}
 		prev = ptr;
 	} while (swapped);
+
+	return;
 }
 
-void insertionSort_LL() {}
+void insertionSort_LL(Nodes<Student> *pHead, SortDir dir) {
+	Nodes<Student> *newLL = nullptr;
+	Nodes<Student> *ptr = pHead;
+
+	while (ptr != nullptr)
+	{
+		Nodes<Student> *next = ptr->next;
+
+		if (dir == SortDir::ASC)
+		{
+			if (newLL == nullptr || (newLL->data > ptr->data || newLL->data == ptr->data))
+			{
+				ptr->next = newLL;
+				newLL = ptr;
+			}
+			else
+			{
+				Nodes<Student> *ptrCur = newLL;
+				while (ptrCur->next != nullptr && ptrCur->next->data < ptr->data)
+				{
+					ptrCur = ptrCur->next;
+				}
+				ptr->next = ptrCur->next;
+				ptrCur->next = ptr;
+			}
+		}
+		else if (dir == SortDir::DESC)
+		{
+			if (newLL == nullptr || (newLL->data < ptr->data))
+			{
+				ptr->next = newLL;
+				newLL = ptr;
+			}
+			else
+			{
+				Nodes<Student> *ptrCur = newLL;
+				while (ptrCur->next != nullptr && (ptrCur->next->data > ptr->data || ptrCur->next->data == ptr->data))
+				{
+					ptrCur = ptrCur->next;
+				}
+				ptr->next = ptrCur->next;
+				ptrCur->next = ptr;
+			}
+		}
+		
+		ptr = next;
+	}
+
+	pHead = newLL;
+
+	return;
+}

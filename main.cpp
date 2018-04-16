@@ -384,7 +384,8 @@ int main() {
 	//add items to linked list
 	for (int i = 0; i < 20; i++)
 	{
-		string t = "M" + to_string((int)dist_m_num(rng));//to_string(i + 10000000); 
+		string t = "M" + to_string(i + 10000000); 
+		//string t = "M" + to_string((int)dist_m_num(rng));//to_string(i + 10000000); 
 		int f = dist_names(rng);
 		int l = dist_names(rng);
 		double gpa = dist_gpa(rng);
@@ -392,11 +393,14 @@ int main() {
 		ll.addItem(s);
 	}
 	//bubble sort
-	bubbleSort_LL(ll.first, SortDir::DESC);
-	ll.displayList();
+	//bubbleSort_LL(ll.first, SortDir::DESC);
+	//ll.displayList();
 	//insertionsort
-
+	//insertionSort_LL(ll.first, SortDir::DESC);
+	//ll.displayList();
 	//quicksort
+
+	//menu
 
 	return 0;
 }
