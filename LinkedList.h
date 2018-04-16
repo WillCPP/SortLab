@@ -113,15 +113,15 @@ public:
 		location = 0;//set to 0 sinces its the beginning of our list
 	}
 	void displayList() {
-		int temp = location;//saves location to not affect our users
-		reset();//resets location so seeNext can be used by our display function
-		while (location<leng) {//Prints each item 
+		Nodes<Student> *ptr = first;
+		while (ptr != nullptr)
+		{
 			cout << "*************************" << endl;
 			cout << "       Node: " << location << endl;
-			seeNext()->data.DisplayData();
+			ptr->data.DisplayData();
 			cout << "*************************" << endl << endl << endl;
+			ptr = ptr->next;
 		}
-		location = temp;//reset location to its previous spot
 	}
 };
 

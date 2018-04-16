@@ -194,9 +194,9 @@ void bubbleSort_LL (Nodes<Student> *pHead, SortDir dir)
 	return;
 }
 
-void insertionSort_LL(Nodes<Student> *pHead, SortDir dir) {
+void insertionSort_LL(LinkedList<Student> &ll, SortDir dir) {
 	Nodes<Student> *newLL = nullptr;
-	Nodes<Student> *ptr = pHead;
+	Nodes<Student> *ptr = ll.first;
 
 	while (ptr != nullptr)
 	{
@@ -242,7 +242,91 @@ void insertionSort_LL(Nodes<Student> *pHead, SortDir dir) {
 		ptr = next;
 	}
 
-	pHead = newLL;
+	ll.first = newLL;
 
+	return;
+}
+
+// Partitions the list taking the last element as the pivot
+Nodes<Student>* split_LL(Nodes<Student> *head, Nodes<Student> *end,
+	Nodes<Student> **newHead, Nodes<Student> **newEnd)
+{
+	Nodes<Student> *ptrPiv = end;
+	Nodes<Student> *ptrPrev = nullptr, *ptrCur = head, *ptrTail = ptrPiv;
+
+	while (ptrCur != ptrPiv)
+	{
+		if (ptrCur->data < ptrPiv->data)
+		{
+			if ((*newHead) == nullptr)
+			{
+				(*newHead) = ptrCur;
+			}
+
+			ptrPrev = ptrCur;
+			ptrCur = ptrCur->next;
+		}
+		else
+		{
+			if (ptrPrev)
+			{
+				ptrPrev->next = ptrCur->next;
+			}
+			Nodes<Student> *tmp = ptrCur->next;
+			ptrCur->next = nullptr;
+			ptrTail->next = ptrCur;
+			ptrTail = ptrCur;
+			ptrCur = tmp;
+		}
+	}
+	if ((*newHead) == nullptr)
+	{
+		(*newHead) = ptrPiv;
+	}
+
+	(*newEnd) = ptrTail;
+
+	return ptrPiv;
+}
+
+Nodes<Student> *quickSort_LL_R(Nodes<Student> *head, Nodes<Student> *end)
+{
+	if (!head || head == end)
+	{
+		return head;
+	}
+
+	Nodes<Student> *newHead = nullptr, *newEnd = nullptr;
+	Nodes<Student> *pivot = split_LL(head, end, &newHead, &newEnd);
+
+	if (newHead != pivot)
+	{
+		Nodes<Student> *temp = newHead;
+		while (temp->next != pivot)
+			temp = temp->next;
+		temp->next = nullptr;
+
+		newHead = quickSort_LL_R(newHead, temp);
+
+		while (temp != nullptr && temp->next != nullptr)
+		{
+			temp = temp->next;
+		}
+		temp->next = pivot;
+	}
+
+	pivot->next = quickSort_LL_R(pivot->next, newEnd);
+
+	return newHead;
+}
+
+void quickSort_LL(Nodes<Student> **pHead)
+{
+	Nodes<Student> **tail = pHead;
+	while ((*tail) != nullptr && (*tail)->next != nullptr)
+	{
+		(*tail) = (*tail)->next;
+	}
+	(*pHead) = quickSort_LL_R(*pHead, *tail);
 	return;
 }

@@ -396,7 +396,7 @@ int main() {
 	//bubbleSort_LL(ll.first, SortDir::DESC);
 	//ll.displayList();
 	//insertionsort
-	//insertionSort_LL(ll.first, SortDir::DESC);
+	//insertionSort_LL(ll, SortDir::DESC);
 	//ll.displayList();
 	//quicksort
 
