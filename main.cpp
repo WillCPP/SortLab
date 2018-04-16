@@ -182,23 +182,23 @@ int main() {
 	auto duration_25000_insertion = duration_cast<nanoseconds>(stop_time_25000_insertion - start_time_25000_insertion);
 
 	auto start_time_10_merge = high_resolution_clock::now();
-	mergeSort(arr_10_merge, S_10); //call function here
+	//mergeSort(arr_10_merge, S_10); //call function here
 	auto stop_time_10_merge = high_resolution_clock::now();
 	auto duration_10_merge = duration_cast<nanoseconds>(stop_time_10_merge - start_time_10_merge);
 	auto start_time_100_merge = high_resolution_clock::now();
-	mergeSort(arr_100_merge, S_100); //call function here
+	//mergeSort(arr_100_merge, S_100); //call function here
 	auto stop_time_100_merge = high_resolution_clock::now();
 	auto duration_100_merge = duration_cast<nanoseconds>(stop_time_100_merge - start_time_100_merge);
 	auto start_time_500_merge = high_resolution_clock::now();
-	mergeSort(arr_500_merge, S_500); //call function here
+	//mergeSort(arr_500_merge, S_500); //call function here
 	auto stop_time_500_merge = high_resolution_clock::now();
 	auto duration_500_merge = duration_cast<nanoseconds>(stop_time_500_merge - start_time_500_merge);
 	auto start_time_5000_merge = high_resolution_clock::now();
-	mergeSort(arr_5000_merge, S_5000); //call function here
+	//mergeSort(arr_5000_merge, S_5000); //call function here
 	auto stop_time_5000_merge = high_resolution_clock::now();
 	auto duration_5000_merge = duration_cast<nanoseconds>(stop_time_5000_merge - start_time_5000_merge);
 	auto start_time_25000_merge = high_resolution_clock::now();
-	mergeSort(arr_25000_merge, S_25000); //call function here
+	//mergeSort(arr_25000_merge, S_25000); //call function here
 	auto stop_time_25000_merge = high_resolution_clock::now();
 	auto duration_25000_merge = duration_cast<nanoseconds>(stop_time_25000_merge - start_time_25000_merge);
 
@@ -359,17 +359,44 @@ int main() {
 	cout << endl;
 
 	////linked list stuff
-	//LinkedList<Student> ll;
+	//data for generating random students
+	string firstNames[100] = { "Emily", " Madison", " Emma", " Hannah", " Olivia", " Abigail", " Isabella", " Ashley", " Samantha", " Elizabeth", " Alexis", " Sarah", " Alyssa",
+		"Grace", " Sophia", " Taylor", " Brianna", " Lauren", " Ava", " Kayla", " Jessica", " Natalie", " Chloe", " Anna", " Victoria", " Hailey",
+		"Mia", " Sydney", " Jasmine", " Morgan", " Julia", " Destiny", " Rachel", " Megan", " Kaitlyn", " Katherine", " Jennifer", " Savannah",
+		"Ella", " Alexandra", " Haley", " Allison", " Maria", " Nicole", " Mackenzie", " Brooke", " Makayla", " Kaylee", " Lily", " Stephanie",
+		"Jacob", " Michael", " Joshua", " Matthew", " Christopher", " Andrew", " Daniel", " Ethan", " Joseph", " William", " Anthony", " Nicholas",
+		"David", " Alexander", " Ryan", " Tyler", " James", " John", " Jonathan", " Brandon", " Christian", " Dylan", " Zachary", " Noah", " Samuel", " Benjamin",
+		"Nathan", " Logan", " Justin", " Jose", " Gabriel", " Austin", " Kevin", " Caleb", " Robert", " Elijah", " Thomas", " Jordan", " Cameron", " Hunter",
+		"Jack", " Angel", " Isaiah", " Jackson", " Evan", " Luke", " Jason", " Isaac", " Mason", " Aaron" };
 
-	////add items to linked list
-	//for (int i = 0; i < 20; i++)
-	//{
-	//	Student s("", "", "", Date(1,1,1), 4.0);
-	//	ll.addItem(s);
-	//}
-	////bubble sort
-	////insertionsort
-	////quicksort
+	string lastNames[100] = { "Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin", "Thompson", "Garcia",
+		"Martinez", "Robinson", "Clark", "Rodriguez", "Lewis", "Lee", "Walker", "Hall", "Allen", "Young", "Hernandez", "King", "Wright", "Lopez", "Hill", "Scott", "Green", "Adams", "Baker", "Gonzalez", "Nelson", 
+		"Carter", "Mitchell", "Perez", "Roberts", "Turner", "Phillips", "Campbell", "Parker", "Evans", "Edwards", "Collins", "Stewart", "Sanchez", "Morris", "Rogers", "Reed", "Cook", "Morgan", "Bell", "Murphy", 
+		"Bailey", "Rivera", "Cooper", "Richardson", "Cox", "Howard", "Ward", "Torres", "Peterson", "Gray", "Ramirez", "James", "Watson", "Brooks", "Kelly", "Sanders", "Price", "Bennett", "Wood", "Barnes", "Ross", 
+		"Henderson", "Coleman", "Jenkins", "Perry", "Powell", "Long", "Patterson", "Hughes", "Flores", "Washington", "Butler", "Simmons", "Foster", "Gonzales", "Bryant", "Alexander", "Russell", "Griffin", "Diaz",
+		"Hayes" };
+	
+	uniform_real_distribution<double> dist_names(0, 100);
+	uniform_real_distribution<double> dist_m_num(10000000, 99999999);
+	uniform_real_distribution<double> dist_gpa(2, 4);
+
+	LinkedList<Student> ll;
+	//add items to linked list
+	for (int i = 0; i < 20; i++)
+	{
+		string t = "M" + to_string((int)dist_m_num(rng));//to_string(i + 10000000); 
+		int f = dist_names(rng);
+		int l = dist_names(rng);
+		double gpa = dist_gpa(rng);
+		Student s(firstNames[f], lastNames[l], t, Date(1,1,1), gpa);
+		ll.addItem(s);
+	}
+	//bubble sort
+	bubbleSort_LL(ll.first, SortDir::DESC);
+	ll.displayList();
+	//insertionsort
+
+	//quicksort
 
 	return 0;
 }

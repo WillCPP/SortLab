@@ -54,26 +54,6 @@ void mergeSort(int data[], int start, int end) {//start is the number the split 
 	}
 }
 
-int findPivot(int data[], int lower, int higher) {
-	int splitPoint = data[higher];
-	int indexLower = (lower - 1);
-
-	for (int i = lower; i <= higher; i++)
-	{
-		if (data[i] <= splitPoint)
-		{
-			indexLower++;
-			int temp = data[indexLower];
-			data[indexLower] = data[i];
-			data[i] = temp;
-		}
-	}
-	int temp = data[indexLower + 1];
-	data[indexLower + 1] = data[higher];
-	data[higher] = temp;
-
-	return indexLower + 1;
-}
 void quickSort(int data[], int lower, int higher) {
 	int low = lower;
 	int high = higher;

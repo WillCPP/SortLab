@@ -1,6 +1,11 @@
 #pragma once
 #include <array>
+#include "LinkedList.h"
+#include "Nodes.h"
+#include "Student.h"
 using namespace std;
+
+enum class SortDir {ASC, DESC};
 
 void heapify(int arr[], int n, int i)
 {
@@ -133,7 +138,49 @@ void radixSort(int arr[], int n) {
 	}
 }
 
+void bubbleSort_LL (Nodes<Student> *start, SortDir dir)
+{
+	bool swapped;
+	Nodes<Student> *ptr = start;
+	Nodes<Student> *prev = nullptr;
 
-void bubbleSort_LL() {}
+	if (ptr == nullptr) {
+		return;
+	}
+
+	do
+	{
+		swapped = false;
+		ptr = start;
+
+		while (ptr->next != prev)
+		{
+			if (dir == SortDir::ASC)
+			{
+				if (ptr->data > ptr->next->data)
+				{
+					//swap(ptr, ptr->next);
+					Student temp = ptr->data;
+					ptr->data = ptr->next->data;
+					ptr->next->data = temp;
+					swapped = true;
+				}
+			}
+			else if (dir == SortDir::DESC)
+			{
+				if (ptr->data < ptr->next->data)
+				{
+					//swap(ptr, ptr->next);
+					Student temp = ptr->data;
+					ptr->data = ptr->next->data;
+					ptr->next->data = temp;
+					swapped = true;
+				}
+			}
+			ptr = ptr->next;
+		}
+		prev = ptr;
+	} while (swapped);
+}
 
 void insertionSort_LL() {}
