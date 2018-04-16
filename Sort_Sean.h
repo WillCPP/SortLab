@@ -3,13 +3,13 @@
 
 using namespace std;
 void Merge(int data[], int start,int  end) {
-	int mid = (end + start) / 2;
-	int len = end - start + 1;
-	int *temp = new int[len]();//used to store sorted values 
-	int i = start;			//used to keep track of postion in start half
-	int j = mid + 1;			//used to keep track of postion in end half
-	int t = 0;				//used to keep track of position in temp
-	while (i <= mid || j <= end) {
+	int mid = (end + start) / 2;	//Midpoint of start end
+	int len = end - start + 1;		//length of temp
+	int *temp = new int[len]();		//used to store sorted values 
+	int i = start;					//used to keep track of postion in start half
+	int j = mid + 1;				//used to keep track of postion in end half
+	int t = 0;						//used to keep track of position in temp
+	while (i <= mid && j <= end) {
 		if (data[i] < data[j]) {//if i spot is smaller than j
 			temp[t] = data[i];
 			i++;
@@ -20,32 +20,35 @@ void Merge(int data[], int start,int  end) {
 		}
 		t++;
 	}
-	while (i <= mid) {
-		temp[t] = data[j];
-		j++;
-		t++;
-	}
-	while (j <= end) {
+	while (i <= mid) {//finishes the start half 
 		temp[t] = data[i];
 		i++;
 		t++;
 	}
-	for (int x = start; x <= end; x++) {
-		data[i] = temp[i-start];
+	while (j <= end) {//Finsihes the end half
+		temp[t] = data[j];
+		j++;
+		t++;
 	}
+	for (int x = start; x <= end; x++) {
+		data[x] = temp[x-start];//Changes data to match fixed order
+	}
+	delete temp;
 }
 
 void mergeSort(int data[], int start, int end);
 void mergeSort(int data[], int n) {//n = length of array
+	n--;//n is legnth of array -1 to get final location of array
 	mergeSort(data, 0, n / 2);//spliting array in two
-	mergeSort(data, n / 2, n);
+	mergeSort(data, n / 2+1, n);
+	Merge(data, 0, n);//merging together
 }
 
 void mergeSort(int data[], int start, int end) {//start is the number the split begins and end is the end but not included
 	if (start < end) {
 		int mid = (end + start) / 2;
 		mergeSort(data, start, mid);
-		mergeSort(data, mid, start);
+		mergeSort(data, mid+1, end);
 		Merge(data, start, end);
 
 	}
