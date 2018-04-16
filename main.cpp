@@ -401,6 +401,114 @@ int main() {
 	//quicksort
 
 	//menu
+	int choice = -1;
+	int validChoice = false;
+	bool quit = false;
+	do
+	{
+		do
+		{
+			cout << "Which sort would you like to use?" << endl;
+			cout << "[1] Bubble" << endl;
+			cout << "[2] Insertion" << endl;
+			cout << "[3] Quick" << endl;
+			cout << "[0] Quit" << endl;
+			cout << "Enter 0-3: ";
+			cin >> choice;
+			if (choice >= 0 && choice <= 3)
+			{
+				validChoice = true;
+			}
+			else
+			{
+				cout << "Invalid choice." << endl;
+				validChoice = false;
+			}
+			cout << endl;
+		} while (!validChoice);
+
+		switch (choice)
+		{
+		case 0: {
+			cout << "Quiting..." << endl;
+			quit = true;
+			break; }
+		case 1: {//Bubble Sort
+			int sort = 0;
+			cout << endl<< "How would you like to sort by Bubble?" << endl;
+			cout << "[0] MNumber" << endl;
+			cout << "[1] First Name" << endl;
+			cout << "[2] Last name" << endl;
+			cout << "Enter 0-2: ";
+			cin >> sort;
+			switch(sort)
+			{
+			case 0://Run by MNumber
+				//call here
+				break;
+			case 1://Run by First
+				   //call here
+				break;
+			case 2://Run by Last
+				   //call here
+				break;
+			default:
+				cout << "Invalid Choice." << endl << endl;
+				break;
+			}
+			break; }
+		case 2: {//Insertion Sort
+			int sort = 0;
+			cout << endl << "How would you like to sort by Insertion?" << endl;
+			cout << "[0] MNumber" << endl;
+			cout << "[1] First Name" << endl;
+			cout << "[2] Last name" << endl;
+			cout << "Enter 0-2: ";
+			cin >> sort;
+			switch (sort)
+			{
+			case 0://Run by MNumber
+				   //call here
+				break;
+			case 1://Run by First
+				   //call here
+				break;
+			case 2://Run by Last
+				   //call here
+				break;
+			default:
+				cout << "Invalid Choice."<<endl << endl ;
+					break;
+			}
+			break; }
+		case 3: {//Quick Sort
+			int sort = 0;
+			cout << endl << "How would you like to sort by Quick?" << endl;
+			cout << "[0] MNumber" << endl;
+			cout << "[1] First Name" << endl;
+			cout << "[2] Last name" << endl;
+			cout << "Enter 0-2: ";
+			cin >> sort;
+			switch (sort)
+			{
+			case 0://Run by MNumber
+				   //call here
+				break;
+			case 1://Run by First
+				   //call here
+				break;
+			case 2://Run by Last
+				   //call here
+				break;
+			default:
+				cout << "Invalid Choice."<< endl << endl;
+					break;
+			}
+			break; }
+		}
+		cout << endl;
+
+	} while (!quit);
 
 	return 0;
 }
