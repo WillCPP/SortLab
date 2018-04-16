@@ -247,9 +247,7 @@ void insertionSort_LL(LinkedList<Student> &ll, SortDir dir) {
 	return;
 }
 
-// Partitions the list taking the last element as the pivot
-Nodes<Student>* split_LL(Nodes<Student> *head, Nodes<Student> *end,
-	Nodes<Student> **newHead, Nodes<Student> **newEnd)
+Nodes<Student>* split_LL(Nodes<Student> *head, Nodes<Student> *end, Nodes<Student> **newHead, Nodes<Student> **newEnd, SortDir dir)
 {
 	Nodes<Student> *ptrPiv = end;
 	Nodes<Student> *ptrPrev = nullptr, *ptrCur = head, *ptrTail = ptrPiv;
@@ -289,7 +287,7 @@ Nodes<Student>* split_LL(Nodes<Student> *head, Nodes<Student> *end,
 	return ptrPiv;
 }
 
-Nodes<Student> *quickSort_LL_R(Nodes<Student> *head, Nodes<Student> *end)
+Nodes<Student> *quickSort_LL_R(Nodes<Student> *head, Nodes<Student> *end, SortDir dir)
 {
 	if (!head || head == end)
 	{
@@ -297,16 +295,18 @@ Nodes<Student> *quickSort_LL_R(Nodes<Student> *head, Nodes<Student> *end)
 	}
 
 	Nodes<Student> *newHead = nullptr, *newEnd = nullptr;
-	Nodes<Student> *pivot = split_LL(head, end, &newHead, &newEnd);
+	Nodes<Student> *pivot = split_LL(head, end, &newHead, &newEnd, dir);
 
 	if (newHead != pivot)
 	{
 		Nodes<Student> *temp = newHead;
 		while (temp->next != pivot)
+		{
 			temp = temp->next;
+		}
 		temp->next = nullptr;
 
-		newHead = quickSort_LL_R(newHead, temp);
+		newHead = quickSort_LL_R(newHead, temp, dir);
 
 		while (temp != nullptr && temp->next != nullptr)
 		{
@@ -315,18 +315,77 @@ Nodes<Student> *quickSort_LL_R(Nodes<Student> *head, Nodes<Student> *end)
 		temp->next = pivot;
 	}
 
-	pivot->next = quickSort_LL_R(pivot->next, newEnd);
+	pivot->next = quickSort_LL_R(pivot->next, newEnd, dir);
 
 	return newHead;
 }
 
-void quickSort_LL(Nodes<Student> **pHead)
+void quickSort_LL(Nodes<Student> **pHead, SortDir dir)
 {
 	Nodes<Student> **tail = pHead;
 	while ((*tail) != nullptr && (*tail)->next != nullptr)
 	{
 		(*tail) = (*tail)->next;
 	}
-	(*pHead) = quickSort_LL_R(*pHead, *tail);
+	(*pHead) = quickSort_LL_R(*pHead, *tail, dir);
 	return;
 }
+
+
+Nodes<Student>* Split(Nodes<Student>* my_node)
+{
+	Nodes<Student>* secondNode;
+
+	if (my_node == nullptr)
+	{
+		return nullptr;
+	}
+	else if (my_node->next == nullptr) 
+	{ 
+		return nullptr;
+	}
+	else {
+		secondNode = my_node->next;
+		my_node->next = secondNode->next;
+		secondNode->next = Split(secondNode->next);
+		return secondNode;
+	}
+}
+Nodes<Student>* Merge(Nodes<Student>* firstNode, Nodes<Student>* secondNode)
+{
+	if (firstNode == nullptr)
+	{
+		return secondNode;
+	}
+	else if (secondNode == nullptr) 
+	{
+		return firstNode;
+	}
+	else if (firstNode->data < secondNode->data || firstNode->data == secondNode->data)
+	{
+		firstNode->next = Merge(firstNode->next, secondNode);
+		return firstNode;
+	}
+	else
+	{
+		secondNode->next = Merge(firstNode, secondNode->next);
+		return secondNode;
+	}
+}
+
+Nodes<Student>* mergeSort_LL(Nodes<Student> **my_node, SortDir dir)
+{
+	Nodes<Student> *secondNode;
+
+	if (*my_node == nullptr)
+		return nullptr;
+	else if ((*my_node)->next == nullptr)
+		return *my_node;
+	else
+	{
+		secondNode = Split(*my_node);
+		return Merge(mergeSort_LL(my_node, dir), mergeSort_LL(&secondNode, dir));
+	}
+}
+
+

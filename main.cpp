@@ -182,23 +182,23 @@ int main() {
 	auto duration_25000_insertion = duration_cast<nanoseconds>(stop_time_25000_insertion - start_time_25000_insertion);
 
 	auto start_time_10_merge = high_resolution_clock::now();
-	//mergeSort(arr_10_merge, S_10); //call function here
+	mergeSort(arr_10_merge, S_10); //call function here
 	auto stop_time_10_merge = high_resolution_clock::now();
 	auto duration_10_merge = duration_cast<nanoseconds>(stop_time_10_merge - start_time_10_merge);
 	auto start_time_100_merge = high_resolution_clock::now();
-	//mergeSort(arr_100_merge, S_100); //call function here
+	mergeSort(arr_100_merge, S_100); //call function here
 	auto stop_time_100_merge = high_resolution_clock::now();
 	auto duration_100_merge = duration_cast<nanoseconds>(stop_time_100_merge - start_time_100_merge);
 	auto start_time_500_merge = high_resolution_clock::now();
-	//mergeSort(arr_500_merge, S_500); //call function here
+	mergeSort(arr_500_merge, S_500); //call function here
 	auto stop_time_500_merge = high_resolution_clock::now();
 	auto duration_500_merge = duration_cast<nanoseconds>(stop_time_500_merge - start_time_500_merge);
 	auto start_time_5000_merge = high_resolution_clock::now();
-	//mergeSort(arr_5000_merge, S_5000); //call function here
+	mergeSort(arr_5000_merge, S_5000); //call function here
 	auto stop_time_5000_merge = high_resolution_clock::now();
 	auto duration_5000_merge = duration_cast<nanoseconds>(stop_time_5000_merge - start_time_5000_merge);
 	auto start_time_25000_merge = high_resolution_clock::now();
-	//mergeSort(arr_25000_merge, S_25000); //call function here
+	mergeSort(arr_25000_merge, S_25000); //call function here
 	auto stop_time_25000_merge = high_resolution_clock::now();
 	auto duration_25000_merge = duration_cast<nanoseconds>(stop_time_25000_merge - start_time_25000_merge);
 
@@ -358,157 +358,159 @@ int main() {
 	cout << setw(16) << "25000" << "|" << setw(15) << right << duration_25000_radix.count() << " ns" << endl;
 	cout << endl;
 
-	////linked list stuff
-	//data for generating random students
-	string firstNames[100] = { "Emily", " Madison", " Emma", " Hannah", " Olivia", " Abigail", " Isabella", " Ashley", " Samantha", " Elizabeth", " Alexis", " Sarah", " Alyssa",
-		"Grace", " Sophia", " Taylor", " Brianna", " Lauren", " Ava", " Kayla", " Jessica", " Natalie", " Chloe", " Anna", " Victoria", " Hailey",
-		"Mia", " Sydney", " Jasmine", " Morgan", " Julia", " Destiny", " Rachel", " Megan", " Kaitlyn", " Katherine", " Jennifer", " Savannah",
-		"Ella", " Alexandra", " Haley", " Allison", " Maria", " Nicole", " Mackenzie", " Brooke", " Makayla", " Kaylee", " Lily", " Stephanie",
-		"Jacob", " Michael", " Joshua", " Matthew", " Christopher", " Andrew", " Daniel", " Ethan", " Joseph", " William", " Anthony", " Nicholas",
-		"David", " Alexander", " Ryan", " Tyler", " James", " John", " Jonathan", " Brandon", " Christian", " Dylan", " Zachary", " Noah", " Samuel", " Benjamin",
-		"Nathan", " Logan", " Justin", " Jose", " Gabriel", " Austin", " Kevin", " Caleb", " Robert", " Elijah", " Thomas", " Jordan", " Cameron", " Hunter",
-		"Jack", " Angel", " Isaiah", " Jackson", " Evan", " Luke", " Jason", " Isaac", " Mason", " Aaron" };
+	//////linked list stuff
+	////data for generating random students
+	//string firstNames[100] = { "Emily", " Madison", " Emma", " Hannah", " Olivia", " Abigail", " Isabella", " Ashley", " Samantha", " Elizabeth", " Alexis", " Sarah", " Alyssa",
+	//	"Grace", " Sophia", " Taylor", " Brianna", " Lauren", " Ava", " Kayla", " Jessica", " Natalie", " Chloe", " Anna", " Victoria", " Hailey",
+	//	"Mia", " Sydney", " Jasmine", " Morgan", " Julia", " Destiny", " Rachel", " Megan", " Kaitlyn", " Katherine", " Jennifer", " Savannah",
+	//	"Ella", " Alexandra", " Haley", " Allison", " Maria", " Nicole", " Mackenzie", " Brooke", " Makayla", " Kaylee", " Lily", " Stephanie",
+	//	"Jacob", " Michael", " Joshua", " Matthew", " Christopher", " Andrew", " Daniel", " Ethan", " Joseph", " William", " Anthony", " Nicholas",
+	//	"David", " Alexander", " Ryan", " Tyler", " James", " John", " Jonathan", " Brandon", " Christian", " Dylan", " Zachary", " Noah", " Samuel", " Benjamin",
+	//	"Nathan", " Logan", " Justin", " Jose", " Gabriel", " Austin", " Kevin", " Caleb", " Robert", " Elijah", " Thomas", " Jordan", " Cameron", " Hunter",
+	//	"Jack", " Angel", " Isaiah", " Jackson", " Evan", " Luke", " Jason", " Isaac", " Mason", " Aaron" };
 
-	string lastNames[100] = { "Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin", "Thompson", "Garcia",
-		"Martinez", "Robinson", "Clark", "Rodriguez", "Lewis", "Lee", "Walker", "Hall", "Allen", "Young", "Hernandez", "King", "Wright", "Lopez", "Hill", "Scott", "Green", "Adams", "Baker", "Gonzalez", "Nelson", 
-		"Carter", "Mitchell", "Perez", "Roberts", "Turner", "Phillips", "Campbell", "Parker", "Evans", "Edwards", "Collins", "Stewart", "Sanchez", "Morris", "Rogers", "Reed", "Cook", "Morgan", "Bell", "Murphy", 
-		"Bailey", "Rivera", "Cooper", "Richardson", "Cox", "Howard", "Ward", "Torres", "Peterson", "Gray", "Ramirez", "James", "Watson", "Brooks", "Kelly", "Sanders", "Price", "Bennett", "Wood", "Barnes", "Ross", 
-		"Henderson", "Coleman", "Jenkins", "Perry", "Powell", "Long", "Patterson", "Hughes", "Flores", "Washington", "Butler", "Simmons", "Foster", "Gonzales", "Bryant", "Alexander", "Russell", "Griffin", "Diaz",
-		"Hayes" };
-	
-	uniform_real_distribution<double> dist_names(0, 100);
-	uniform_real_distribution<double> dist_m_num(10000000, 99999999);
-	uniform_real_distribution<double> dist_gpa(2, 4);
+	//string lastNames[100] = { "Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin", "Thompson", "Garcia",
+	//	"Martinez", "Robinson", "Clark", "Rodriguez", "Lewis", "Lee", "Walker", "Hall", "Allen", "Young", "Hernandez", "King", "Wright", "Lopez", "Hill", "Scott", "Green", "Adams", "Baker", "Gonzalez", "Nelson", 
+	//	"Carter", "Mitchell", "Perez", "Roberts", "Turner", "Phillips", "Campbell", "Parker", "Evans", "Edwards", "Collins", "Stewart", "Sanchez", "Morris", "Rogers", "Reed", "Cook", "Morgan", "Bell", "Murphy", 
+	//	"Bailey", "Rivera", "Cooper", "Richardson", "Cox", "Howard", "Ward", "Torres", "Peterson", "Gray", "Ramirez", "James", "Watson", "Brooks", "Kelly", "Sanders", "Price", "Bennett", "Wood", "Barnes", "Ross", 
+	//	"Henderson", "Coleman", "Jenkins", "Perry", "Powell", "Long", "Patterson", "Hughes", "Flores", "Washington", "Butler", "Simmons", "Foster", "Gonzales", "Bryant", "Alexander", "Russell", "Griffin", "Diaz",
+	//	"Hayes" };
+	//
+	//uniform_real_distribution<double> dist_names(0, 100);
+	//uniform_real_distribution<double> dist_m_num(10000000, 99999999);
+	//uniform_real_distribution<double> dist_gpa(2, 4);
 
-	LinkedList<Student> ll;
-	//add items to linked list
-	for (int i = 0; i < 20; i++)
-	{
-		string t = "M" + to_string(i + 10000000); 
-		//string t = "M" + to_string((int)dist_m_num(rng));//to_string(i + 10000000); 
-		int f = dist_names(rng);
-		int l = dist_names(rng);
-		double gpa = dist_gpa(rng);
-		Student s(firstNames[f], lastNames[l], t, Date(1,1,1), gpa);
-		ll.addItem(s);
-	}
-	//bubble sort
-	//bubbleSort_LL(ll.first, SortDir::DESC);
+	//LinkedList<Student> ll;
+	////add items to linked list
+	//for (int i = 0; i < 20; i++)
+	//{
+	//	string t = "M" + to_string(i + 10000000); 
+	//	//string t = "M" + to_string((int)dist_m_num(rng));//to_string(i + 10000000); 
+	//	int f = dist_names(rng);
+	//	int l = dist_names(rng);
+	//	double gpa = dist_gpa(rng);
+	//	Student s(firstNames[f], lastNames[l], t, Date(1,1,1), gpa);
+	//	ll.addItem(s);
+	//}
+	////bubble sort
+	////bubbleSort_LL(ll.first, SortDir::DESC);
+	////ll.displayList();
+	////insertionsort
+	////insertionSort_LL(ll, SortDir::DESC);
+	////ll.displayList();
+	////quicksort
+	//mergeSort_LL(&ll.first, SortDir::ASC);
 	//ll.displayList();
-	//insertionsort
-	//insertionSort_LL(ll, SortDir::DESC);
-	//ll.displayList();
-	//quicksort
 
-	//menu
-	int choice = -1;
-	int validChoice = false;
-	bool quit = false;
-	do
-	{
-		do
-		{
-			cout << "Which sort would you like to use?" << endl;
-			cout << "[1] Bubble" << endl;
-			cout << "[2] Insertion" << endl;
-			cout << "[3] Quick" << endl;
-			cout << "[0] Quit" << endl;
-			cout << "Enter 0-3: ";
-			cin >> choice;
-			if (choice >= 0 && choice <= 3)
-			{
-				validChoice = true;
-			}
-			else
-			{
-				cout << "Invalid choice." << endl;
-				validChoice = false;
-			}
-			cout << endl;
-		} while (!validChoice);
+	////menu
+	////int choice = -1;
+	////int validChoice = false;
+	////bool quit = false;
+	////do
+	////{
+	////	do
+	////	{
+	////		cout << "Which sort would you like to use?" << endl;
+	////		cout << "[1] Bubble" << endl;
+	////		cout << "[2] Insertion" << endl;
+	////		cout << "[3] Quick" << endl;
+	////		cout << "[0] Quit" << endl;
+	////		cout << "Enter 0-3: ";
+	////		cin >> choice;
+	////		if (choice >= 0 && choice <= 3)
+	////		{
+	////			validChoice = true;
+	////		}
+	////		else
+	////		{
+	////			cout << "Invalid choice." << endl;
+	////			validChoice = false;
+	////		}
+	////		cout << endl;
+	////	} while (!validChoice);
 
-		switch (choice)
-		{
-		case 0: {
-			cout << "Quiting..." << endl;
-			quit = true;
-			break; }
-		case 1: {//Bubble Sort
-			int sort = 0;
-			cout << endl<< "How would you like to sort by Bubble?" << endl;
-			cout << "[0] MNumber" << endl;
-			cout << "[1] First Name" << endl;
-			cout << "[2] Last name" << endl;
-			cout << "Enter 0-2: ";
-			cin >> sort;
-			switch(sort)
-			{
-			case 0://Run by MNumber
-				//call here
-				break;
-			case 1://Run by First
-				   //call here
-				break;
-			case 2://Run by Last
-				   //call here
-				break;
-			default:
-				cout << "Invalid Choice." << endl << endl;
-				break;
-			}
-			break; }
-		case 2: {//Insertion Sort
-			int sort = 0;
-			cout << endl << "How would you like to sort by Insertion?" << endl;
-			cout << "[0] MNumber" << endl;
-			cout << "[1] First Name" << endl;
-			cout << "[2] Last name" << endl;
-			cout << "Enter 0-2: ";
-			cin >> sort;
-			switch (sort)
-			{
-			case 0://Run by MNumber
-				   //call here
-				break;
-			case 1://Run by First
-				   //call here
-				break;
-			case 2://Run by Last
-				   //call here
-				break;
-			default:
-				cout << "Invalid Choice."<<endl << endl ;
-					break;
-			}
-			break; }
-		case 3: {//Quick Sort
-			int sort = 0;
-			cout << endl << "How would you like to sort by Quick?" << endl;
-			cout << "[0] MNumber" << endl;
-			cout << "[1] First Name" << endl;
-			cout << "[2] Last name" << endl;
-			cout << "Enter 0-2: ";
-			cin >> sort;
-			switch (sort)
-			{
-			case 0://Run by MNumber
-				   //call here
-				break;
-			case 1://Run by First
-				   //call here
-				break;
-			case 2://Run by Last
-				   //call here
-				break;
-			default:
-				cout << "Invalid Choice."<< endl << endl;
-					break;
-			}
-			break; }
-		}
-		cout << endl;
+	////	switch (choice)
+	////	{
+	////	case 0: {
+	////		cout << "Quiting..." << endl;
+	////		quit = true;
+	////		break; }
+	////	case 1: {//Bubble Sort
+	////		int sort = 0;
+	////		cout << endl<< "How would you like to sort by Bubble?" << endl;
+	////		cout << "[0] MNumber" << endl;
+	////		cout << "[1] First Name" << endl;
+	////		cout << "[2] Last name" << endl;
+	////		cout << "Enter 0-2: ";
+	////		cin >> sort;
+	////		switch(sort)
+	////		{
+	////		case 0://Run by MNumber
+	////			//call here
+	////			break;
+	////		case 1://Run by First
+	////			   //call here
+	////			break;
+	////		case 2://Run by Last
+	////			   //call here
+	////			break;
+	////		default:
+	////			cout << "Invalid Choice." << endl << endl;
+	////			break;
+	////		}
+	////		break; }
+	////	case 2: {//Insertion Sort
+	////		int sort = 0;
+	////		cout << endl << "How would you like to sort by Insertion?" << endl;
+	////		cout << "[0] MNumber" << endl;
+	////		cout << "[1] First Name" << endl;
+	////		cout << "[2] Last name" << endl;
+	////		cout << "Enter 0-2: ";
+	////		cin >> sort;
+	////		switch (sort)
+	////		{
+	////		case 0://Run by MNumber
+	////			   //call here
+	////			break;
+	////		case 1://Run by First
+	////			   //call here
+	////			break;
+	////		case 2://Run by Last
+	////			   //call here
+	////			break;
+	////		default:
+	////			cout << "Invalid Choice."<<endl << endl ;
+	////				break;
+	////		}
+	////		break; }
+	////	case 3: {//Quick Sort
+	////		int sort = 0;
+	////		cout << endl << "How would you like to sort by Quick?" << endl;
+	////		cout << "[0] MNumber" << endl;
+	////		cout << "[1] First Name" << endl;
+	////		cout << "[2] Last name" << endl;
+	////		cout << "Enter 0-2: ";
+	////		cin >> sort;
+	////		switch (sort)
+	////		{
+	////		case 0://Run by MNumber
+	////			   //call here
+	////			break;
+	////		case 1://Run by First
+	////			   //call here
+	////			break;
+	////		case 2://Run by Last
+	////			   //call here
+	////			break;
+	////		default:
+	////			cout << "Invalid Choice."<< endl << endl;
+	////				break;
+	////		}
+	////		break; }
+	////	}
+	////	cout << endl;
 
-	} while (!quit);
+	////} while (!quit);
 
 	return 0;
 }
